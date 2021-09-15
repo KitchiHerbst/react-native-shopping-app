@@ -21,8 +21,12 @@ const messages = [
   },
 ];
 
-const messageSelection = (selectedMessage) => {
-  //   console.log("message selected" + selectedMessage.subtitle);
+const messageSelection = () => {
+  console.log("message selected");
+};
+
+const deleteHandler = message => {
+  console.log("delete");
 };
 
 const Messages = () => {
@@ -37,7 +41,9 @@ const Messages = () => {
             title={item.title}
             subtitle={item.description}
             onPress={messageSelection}
-            renderRightActions={ListItemDeleteAction}
+            renderRightActions={() => (
+              <ListItemDeleteAction onPress={deleteHandler} />
+            )}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}

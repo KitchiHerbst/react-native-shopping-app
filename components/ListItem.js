@@ -10,7 +10,7 @@ const ListItem = ({ image, title, subtitle, onPress, renderRightActions }) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight
-        onPress={() => onPress({ image, title, subtitle, onPress })}
+        onPress={onPress}
         underlayColor={colors.light}
       >
         <View style={styles.container}>
