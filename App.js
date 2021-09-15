@@ -8,9 +8,8 @@ import AppText from "./components/AppText";
 import AppButton from "./components/AppButton";
 import Card from "./components/Card";
 import ListingDetails from "./screens/ListingDetails";
+import Messages from "./screens/Messages";
 
 export default function App() {
-  return (
-    <ListingDetails />
-  );
+  return <Messages />;
 }
