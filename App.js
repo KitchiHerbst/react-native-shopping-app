@@ -7,22 +7,10 @@ import ItemView from "./screens/ItemView";
 import AppText from "./components/AppText";
 import AppButton from "./components/AppButton";
 import Card from "./components/Card";
+import ListingDetails from "./screens/ListingDetails";
 
 export default function App() {
   return (
-    <View
-      style={{
-        backgroundColor: "#f8f4f4",
-        padding: 20,
-        paddingTop: 100,
-        flex: 1,
-      }}
-    >
-      <Card
-        title="Red Jacket for Sale"
-        subtitle="$100"
-        image={require("./assets/jacket.jpg")}
-      />
-    </View>
+    <ListingDetails />
   );
 }
