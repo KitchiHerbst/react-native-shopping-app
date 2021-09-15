@@ -2,6 +2,7 @@ import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import ListItem from "../components/ListItem";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Screen from "../components/Screen";
 
@@ -21,7 +22,7 @@ const messages = [
 ];
 
 const messageSelection = (selectedMessage) => {
-//   console.log("message selected" + selectedMessage.subtitle);
+  //   console.log("message selected" + selectedMessage.subtitle);
 };
 
 const Messages = () => {
@@ -36,6 +37,7 @@ const Messages = () => {
             title={item.title}
             subtitle={item.description}
             onPress={messageSelection}
+            renderRightActions={ListItemDeleteAction}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
