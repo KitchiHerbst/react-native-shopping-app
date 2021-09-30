@@ -10,7 +10,8 @@ import Card from "./components/Card";
 import ListingDetails from "./screens/ListingDetails";
 import Messages from "./screens/Messages";
 import Account from "./screens/Account";
+import Listings from "./screens/Listings";
 
 export default function App() {
-  return <Account />;
+  return <Listings />;
 }
