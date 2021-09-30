@@ -9,7 +9,8 @@ import AppButton from "./components/AppButton";
 import Card from "./components/Card";
 import ListingDetails from "./screens/ListingDetails";
 import Messages from "./screens/Messages";
+import Account from "./screens/Account";
 
 export default function App() {
-  return <Messages />;
+  return <Account />;
 }
