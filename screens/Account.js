@@ -2,10 +2,10 @@ import React from "react";
 import { FlatList, StyleSheet, Text, View, ViewComponent } from "react-native";
 import Icon from "../components/Icon";
 import ListItem from "../components/ListItem";
+import ListItemSeparator from "../components/ListItemSeparator";
 
 //local
 import Screen from "../components/Screen";
-import SmallListItem from "../components/SmallListItem";
 import colors from "../config/colors";
 
 const menuItems = [
@@ -27,23 +27,23 @@ const menuItems = [
 
 export default function Account() {
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <View style={styles.account}>
         <ListItem
           image={require("../assets/mosh.jpg")}
           title="Mosh Hamedani"
           subtitle="mosh@gmail.com"
-          style={styles.account}
         />
       </View>
-      <View>
+      <View style={styles.options}>
         <FlatList
           data={menuItems}
           keyExtractor={(item) => item.title}
+          ItemSeparatorComponent={ListItemSeparator}
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
-              ImageComponent={
+              IconComponent={
                 <Icon
                   name={item.icon.name}
                   backgroundColor={item.icon.backgroundColor}
@@ -53,22 +53,11 @@ export default function Account() {
           )}
         />
       </View>
-      {/* <SmallListItem
-        icon="format-list-bulleted"
-        color={colors.primary}
-        title="My Listings"
-      />
-      <SmallListItem
-        icon="email"
-        color={colors.secondary}
-        title="My Messages"
-      />
-      <SmallListItem
-        icon="logout"
-        color="#ffe66d"
+
+      <ListItem
         title="Logout"
-        style={styles.logout}
-      /> */}
+        IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+      />
     </Screen>
   );
 }
@@ -79,8 +68,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 40,
   },
-
-  logout: {
-    marginTop: 30,
+  options: {
+    marginBottom: 30,
+  },
+  screen: {
+    backgroundColor: colors.light,
   },
 });
