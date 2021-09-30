@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 import Card from "../components/Card";
 
 import Screen from "../components/Screen";
@@ -33,11 +33,13 @@ export default function Listings() {
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subtitle={"$" + item.subtitle}
-            image={item.image}
-          />
+          <View style={styles.cardWrapper}>
+            <Card
+              title={item.title}
+              subtitle={"$" + item.subtitle}
+              image={item.image}
+            />
+          </View>
         )}
       />
     </Screen>
@@ -45,8 +47,16 @@ export default function Listings() {
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        padding: 10,
-        backgroundColor: colors.light
-    }
+  screen: {
+    // padding: 10,
+    backgroundColor: colors.light,
+  },
+  cardWrapper: {
+    margin: 10,
+    shadowColor: colors.black,
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
+  },
 });
