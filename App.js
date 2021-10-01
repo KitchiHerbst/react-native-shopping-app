@@ -22,17 +22,24 @@ import Screen from "./components/Screen";
 import AppTextInput from "./components/AppTextInput";
 import AppPicker from "./components/AppPicker";
 
+const categories = [
+  { label: "Furniture", value: 1 },
+  { label: "Clothing", value: 2 },
+  { label: "Cameras", value: 3 },
+];
+
 export default function App() {
-  const [bool, setBool] = useState(false);
-  const categories = [
-    { label: "Furniture", value: 1 },
-    { label: "Clothing", value: 2 },
-    { label: "Cameras", value: 3 },
-  ];
+  const [category, setCategory] = useState(categories[0]);
 
   return (
     <Screen>
-      <AppPicker items={categories} placeholder="Category" icon="apps" />
+      <AppPicker
+        selectedItem={category}
+        items={categories}
+        placeholder="Category"
+        icon="apps"
+        onSelectItem={(item) => setCategory(item)}
+      />
       <AppTextInput placeholder="Email" icon="email" />
     </Screen>
   );
