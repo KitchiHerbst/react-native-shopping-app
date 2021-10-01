@@ -20,13 +20,15 @@ import Account from "./screens/Account";
 import Listings from "./screens/Listings";
 import Screen from "./components/Screen";
 import AppTextInput from "./components/AppTextInput";
+import AppPicker from "./components/AppPicker";
 
 export default function App() {
   const [bool, setBool] = useState(false);
 
   return (
     <Screen>
-      <Switch value={bool} onValueChange={() => setBool(!bool)} />
+      <AppPicker placeholder="Category" icon='apps' />
+      <AppTextInput placeholder="Email" icon='email'/>
     </Screen>
   );
 }
