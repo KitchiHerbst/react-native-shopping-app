@@ -1,5 +1,5 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import React, {useState} from "react";
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Home from "./screens/Home";
@@ -11,7 +11,16 @@ import ListingDetails from "./screens/ListingDetails";
 import Messages from "./screens/Messages";
 import Account from "./screens/Account";
 import Listings from "./screens/Listings";
+import Screen from "./components/Screen";
+import AppTextInput from "./components/AppTextInput";
 
 export default function App() {
-  return <Listings />;
+
+  const [text, setText] = useState('')
+
+  return (
+    <Screen>
+      <AppTextInput icon='email' placeholder='Email'/>
+    </Screen>
+  );
 }
