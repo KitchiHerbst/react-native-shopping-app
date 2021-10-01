@@ -1,5 +1,12 @@
-import React, {useState} from "react";
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Home from "./screens/Home";
@@ -15,12 +22,11 @@ import Screen from "./components/Screen";
 import AppTextInput from "./components/AppTextInput";
 
 export default function App() {
-
-  const [text, setText] = useState('')
+  const [bool, setBool] = useState(false);
 
   return (
     <Screen>
-      <AppTextInput icon='email' placeholder='Email'/>
+      <Switch value={bool} onValueChange={() => setBool(!bool)} />
     </Screen>
   );
 }
