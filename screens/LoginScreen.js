@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, Image, View } from "react-native";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 import Screen from "../components/Screen";
 import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
 
 export default function LoginScreen() {
-
   return (
     <Screen>
       <Image source={require("../assets/logo-red.png")} style={styles.logo} />
@@ -16,7 +16,7 @@ export default function LoginScreen() {
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => console.log(values)}
         >
-          { ({ handleChange, handleSubmit }) => (
+          {({ handleChange, handleSubmit }) => (
             <>
               <AppTextInput
                 placeholder="Email"
@@ -25,7 +25,7 @@ export default function LoginScreen() {
                 autoCorrect={false}
                 keyboardType="email-address"
                 textContentType="emailAddress"
-                onChangeText={handleChange('email')}
+                onChangeText={handleChange("email")}
               />
               <AppTextInput
                 placeholder="Password"
@@ -34,12 +34,9 @@ export default function LoginScreen() {
                 icon="lock"
                 textContentType="password"
                 secureTextEntry
-                onChangeText={handleChange('password')}
+                onChangeText={handleChange("password")}
               />
-              <AppButton
-                title="Login"
-                onPress={handleSubmit}
-              />
+              <AppButton title="Login" onPress={handleSubmit} />
             </>
           )}
         </Formik>
