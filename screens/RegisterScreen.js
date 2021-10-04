@@ -34,7 +34,7 @@ export default function RegisterScreen() {
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="email-address"
-          textContentType="emailaddress"
+          textContentType="emailAddress"
         />
         <AppFormField
           name="password"
