@@ -9,6 +9,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import Screen from "../components/Screen";
 import AppFormField from "../components/AppFormField";
 import SubmitButton from "../components/SubmitButton";
+import AppForm from "../components/AppForm";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -20,35 +21,31 @@ export default function LoginScreen() {
     <Screen>
       <Image source={require("../assets/logo-red.png")} style={styles.logo} />
       <View style={styles.screen}>
-        <Formik
+        <AppForm
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
-          {() => (
-            <>
-              <AppFormField
-                name="email"
-                placeholder="Email"
-                icon="email"
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="email-address"
-                textContentType="emailAddress"
-              />
-              <AppFormField
-                placeholder="Password"
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="lock"
-                textContentType="password"
-                secureTextEntry
-                name="password"
-              />
-              <SubmitButton title="Login" />
-            </>
-          )}
-        </Formik>
+          <AppFormField
+            name="email"
+            placeholder="Email"
+            icon="email"
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="email-address"
+            textContentType="emailAddress"
+          />
+          <AppFormField
+            placeholder="Password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="lock"
+            textContentType="password"
+            secureTextEntry
+            name="password"
+          />
+          <SubmitButton title="Login" />
+        </AppForm>
       </View>
     </Screen>
   );
