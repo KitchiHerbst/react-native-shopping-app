@@ -1,12 +1,14 @@
 import React from "react";
 import { View, StyleSheet, Image, ImageBackground, Text } from "react-native";
+
+//local
 import AppButton from "../components/AppButton";
 import colors from "../config/colors";
 
 export default function Home() {
   return (
     <ImageBackground
-      blurRadius="5"
+      blurRadius={5}
       source={require("../assets/background.jpg")}
       style={styles.background}
     >

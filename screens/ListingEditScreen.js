@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
-import { AppForm, AppFormField } from "../components/forms";
-import AppFormPicker from "../components/forms/AppFormPicker";
+import {
+  AppForm,
+  AppFormField,
+  SubmitButton,
+  AppFormPicker,
+} from "../components/forms";
+
 import Screen from "../components/Screen";
 
 const pickerItems = [
@@ -13,36 +18,39 @@ const pickerItems = [
 ];
 
 export default function ListingEditScreen() {
-  const [selectedCategory, setSelectedCategory] = useState();
-
-  const onSelectCategory = (item) => {
-    setSelectedCategory(item);
-  };
-
   const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),
     price: Yup.number().required().min(1).max(10000).label("Price"),
-    category: Yup.string().required().label("Category"),
+    category: Yup.object().required().nullable().label("Category"),
     description: Yup.string().max(250).label("Description"),
   });
 
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <AppForm
-        initialValues={{ title: "", price: "", category: "", description: "" }}
+        initialValues={{
+          title: "",
+          price: "",
+          category: null,
+          description: "",
+        }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField name="title" placeholder="Title" />
-        <AppFormField name="price" placeholder="Price" />
+        <AppFormField maxLength={250} name="title" placeholder="Title" />
+        <AppFormField maxLength={8} name="price" placeholder="Price" />
         <AppFormPicker
           name="category"
           placeholder="Category"
           items={pickerItems}
-          selectedItem={selectedCategory}
-          onSelectItem={onSelectCategory}
         />
-        <AppFormField name="description" placeholder="Description" />
+        <AppFormField
+          name="description"
+          placeholder="Description"
+          multiline
+          numberOfLines={3}
+        />
+        <SubmitButton title="POST" />
       </AppForm>
     </Screen>
   );
