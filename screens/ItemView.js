@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Image, SafeAreaView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+//local
 import colors from "../config/colors";
 
 export default function ItemView() {
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between",
-    // marginTop: 20
   },
   image: {
     width: "100%",

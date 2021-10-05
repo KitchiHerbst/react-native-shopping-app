@@ -3,8 +3,8 @@ import React from "react";
 import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 
-import colors from "../config/colors";
-import AppText from "./AppText";
+import colors from "../../config/colors";
+import AppText from "../AppText";
 
 const ListItem = ({
   image,
