@@ -48,6 +48,7 @@ const Messages = () => {
             title={item.title}
             subtitle={item.description}
             onPress={messageSelection}
+            showChevron={true}
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => deleteHandler(item.id)} />
             )}

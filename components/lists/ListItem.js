@@ -1,4 +1,4 @@
-import { blockStatement } from "@babel/types";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
@@ -14,6 +14,7 @@ const ListItem = ({
   renderRightActions,
   style,
   IconComponent,
+  showChevron,
 }) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
@@ -25,6 +26,14 @@ const ListItem = ({
             <AppText style={styles.title}>{title}</AppText>
             <AppText style={styles.subtitle}>{subtitle}</AppText>
           </View>
+          {showChevron && (
+            <MaterialCommunityIcons
+              name="chevron-right"
+              size={30}
+              color={colors.medium}
+              style={styles.chevron}
+            />
+          )}
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -39,9 +48,13 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: colors.white,
   },
+  chevron: {
+    alignSelf: "center",
+  },
   detailsContainer: {
     marginLeft: 10,
     justifyContent: "center",
+    flex: 1,
   },
   image: {
     width: 70,
