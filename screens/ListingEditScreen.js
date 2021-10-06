@@ -38,7 +38,7 @@ export default function ListingEditScreen() {
         validationSchema={validationSchema}
       >
         <AppFormField maxLength={250} name="title" placeholder="Title" />
-        <AppFormField maxLength={8} name="price" placeholder="Price" />
+        <AppFormField maxLength={8} name="price" placeholder="Price" width='30%'/>
         <AppFormPicker
           name="category"
           placeholder="Category"
