@@ -1,17 +1,36 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+
+import Icon from "./Icon";
+import { TouchableOpacity, StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
-export default function PickerItem({ label, onPress }) {
+export default function PickerItem({
+  label,
+  onPress,
+  backgroundColor,
+  size,
+  iconName,
+}) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <AppText style={styles.text}>{label}</AppText>
+      <View style={styles.container}>
+        <Icon name={iconName} size={size} backgroundColor={backgroundColor} />
+        <AppText style={styles.text}>{label}</AppText>
+      </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    borderColor: "black",
+    borderWidth: 1,
+    width: "30%",
+    alignItems: "center",
+  },
   text: {
-    padding: 20,
+    paddingTop: 5,
+    paddingBottom: 20,
+    fontWeight: "500",
   },
 });

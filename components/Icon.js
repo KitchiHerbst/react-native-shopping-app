@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import {MaterialCommunityIcons} from "@expo/vector-icons"
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
+import AppText from "./AppText";
 
 export default function Icon({
   name,
@@ -12,18 +13,24 @@ export default function Icon({
 }) {
   return (
     <View
-      style={{
-        width: size,
-        height: size,
-        borderRadius: size / 2,
-        backgroundColor: backgroundColor,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
+      style={[
+        styles.container,
+        {
+          width: size,
+          height: size,
+          borderRadius: size / 2,
+          backgroundColor: backgroundColor,
+        },
+      ]}
     >
-        <MaterialCommunityIcons name={name} color={iconColor} size={size/2}/>
+      <MaterialCommunityIcons name={name} color={iconColor} size={size / 2} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
