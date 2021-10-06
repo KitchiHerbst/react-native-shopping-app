@@ -66,17 +66,11 @@ export default function AppPicker({
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <View style={item.icon ? styles.iconPicker : null}>
-                {item.icon && (
-                  <Icon
-                    backgroundColor={item.color}
-                    size={item.size}
-                    name={item.icon}
-                  />
-                )}
+              <View style={styles.iconPicker}>
                 <PickerItem
                   label={item.label}
                   onPress={() => selectionHandler(item)}
+                  item={item}
                 />
               </View>
             )}
