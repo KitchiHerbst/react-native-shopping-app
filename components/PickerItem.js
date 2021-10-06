@@ -7,14 +7,10 @@ import AppText from "./AppText";
 export default function PickerItem({
   label,
   onPress,
-  backgroundColor,
-  size,
-  iconName,
 }) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.container}>
-        <Icon name={iconName} size={size} backgroundColor={backgroundColor} />
+      <View>
         <AppText style={styles.text}>{label}</AppText>
       </View>
     </TouchableOpacity>
@@ -22,12 +18,6 @@ export default function PickerItem({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderColor: "black",
-    borderWidth: 1,
-    width: "30%",
-    alignItems: "center",
-  },
   text: {
     paddingTop: 5,
     paddingBottom: 20,

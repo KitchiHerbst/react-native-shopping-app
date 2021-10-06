@@ -28,6 +28,13 @@ const pickerItems = [
     size: 75,
     icon: "shoe-heel",
   },
+  {
+    value: 3,
+    label: "Books",
+    color: "#CBC3E3",
+    size: 75,
+    icon: "book-open-variant",
+  },
   { value: 4, label: "Cameras", color: "#fed330", size: 75, icon: "camera" },
   { value: 5, label: "Cars", color: "#fd9644", size: 75, icon: "car" },
   { value: 6, label: "Games", color: "#26de81", size: 75, icon: "cards" },

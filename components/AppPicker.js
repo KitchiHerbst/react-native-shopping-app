@@ -14,6 +14,7 @@ import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
+import Icon from "./Icon";
 
 export default function AppPicker({
   icon,
@@ -58,21 +59,28 @@ export default function AppPicker({
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <Button title="Close" onPress={() => setModalVisible(false)} />
-          <View style={styles.modalContainer}>
-            <FlatList
-              data={items}
-              keyExtractor={(item) => item.value.toString()}
-              renderItem={({ item }) => (
+
+          <FlatList
+            numColumns={3}
+            columnWrapperStyle={{ justifyContent: "space-around" }}
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            renderItem={({ item }) => (
+              <View style={item.icon ? styles.iconPicker : null}>
+                {item.icon && (
+                  <Icon
+                    backgroundColor={item.color}
+                    size={item.size}
+                    name={item.icon}
+                  />
+                )}
                 <PickerItem
                   label={item.label}
                   onPress={() => selectionHandler(item)}
-                  backgroundColor={item.color}
-                  size={item.size}
-                  iconName={item.icon}
                 />
-              )}
-            />
-          </View>
+              </View>
+            )}
+          />
         </Screen>
       </Modal>
     </>
@@ -90,10 +98,9 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
-  modalContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    flex: 1,
+  iconPicker: {
+    alignItems: "center",
+    width: "30%",
   },
   placeholder: {
     color: defaultStyles.colors.medium,
