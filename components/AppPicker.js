@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   iconPicker: {
     alignItems: "center",
     width: "30%",
+    paddingTop: 20,
   },
   placeholder: {
     color: defaultStyles.colors.medium,

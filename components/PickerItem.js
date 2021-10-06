@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
   container: { alignItems: "center" },
   text: {
     paddingTop: 5,
-    paddingBottom: 20,
     fontWeight: "500",
   },
 });
