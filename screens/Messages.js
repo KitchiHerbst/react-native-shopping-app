@@ -13,7 +13,8 @@ const m = [
   {
     id: 1,
     title: "T1",
-    description: "D1",
+    description:
+      "bingo bongo bingo bango she gotta baby and the baby say so ice cream vanilla shake",
     image: require("../assets/mosh.jpg"),
   },
   {

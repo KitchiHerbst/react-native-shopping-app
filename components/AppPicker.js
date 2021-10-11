@@ -20,6 +20,8 @@ export default function AppPicker({
   icon,
   items,
   placeholder,
+  PickerItemComponent = PickerItem,
+  numberOfColumns = 1,
   onSelectItem,
   selectedItem,
   width = "100%",
@@ -61,18 +63,14 @@ export default function AppPicker({
           <Button title="Close" onPress={() => setModalVisible(false)} />
 
           <FlatList
-            numColumns={3}
-            columnWrapperStyle={{ justifyContent: "space-around" }}
+            numColumns={numberOfColumns}
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <View style={styles.iconPicker}>
-                <PickerItem
-                  label={item.label}
-                  onPress={() => selectionHandler(item)}
-                  item={item}
-                />
-              </View>
+              <PickerItemComponent
+                onPress={() => selectionHandler(item)}
+                item={item}
+              />
             )}
           />
         </Screen>
@@ -91,11 +89,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
-  },
-  iconPicker: {
-    alignItems: "center",
-    width: "30%",
-    paddingTop: 20,
   },
   placeholder: {
     color: defaultStyles.colors.medium,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
 import {
   AppForm,
@@ -88,6 +89,8 @@ export default function ListingEditScreen() {
           items={pickerItems}
           width="50%"
           iconSize={50}
+          PickerItemComponent={CategoryPickerItem}
+          numberOfColumns={3}
         />
         <AppFormField
           name="description"
