@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
 import {
   AppForm,
@@ -8,13 +9,51 @@ import {
   SubmitButton,
   AppFormPicker,
 } from "../components/forms";
+import Icon from "../components/Icon";
 
 import Screen from "../components/Screen";
+import colors from "../config/colors";
 
 const pickerItems = [
-  { value: 1, label: "Furniture" },
-  { value: 2, label: "Clothing" },
-  { value: 3, label: "Cameras" },
+  {
+    value: 1,
+    label: "Furniture",
+    color: "#fc5c65",
+    size: 75,
+    icon: "floor-lamp",
+  },
+  {
+    value: 2,
+    label: "Clothing",
+    color: "#2bcbba",
+    size: 75,
+    icon: "shoe-heel",
+  },
+  {
+    value: 3,
+    label: "Books",
+    color: "#CBC3E3",
+    size: 75,
+    icon: "book-open-variant",
+  },
+  { value: 4, label: "Cameras", color: "#fed330", size: 75, icon: "camera" },
+  { value: 5, label: "Cars", color: "#fd9644", size: 75, icon: "car" },
+  { value: 6, label: "Games", color: "#26de81", size: 75, icon: "cards" },
+  { value: 7, label: "Sports", color: "#45aaf2", size: 75, icon: "basketball" },
+  {
+    value: 8,
+    label: "Movies & Music",
+    color: "#4b7bec",
+    size: 75,
+    icon: "headphones",
+  },
+  {
+    value: 9,
+    label: "Other",
+    color: colors.medium,
+    size: 75,
+    icon: "window-maximize",
+  },
 ];
 
 export default function ListingEditScreen() {
@@ -49,6 +88,9 @@ export default function ListingEditScreen() {
           placeholder="Category"
           items={pickerItems}
           width="50%"
+          iconSize={50}
+          PickerItemComponent={CategoryPickerItem}
+          numberOfColumns={3}
         />
         <AppFormField
           name="description"

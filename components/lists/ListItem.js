@@ -24,14 +24,13 @@ const ListItem = ({
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subtitle}>{subtitle}</AppText>
+            <AppText style={styles.subtitle} numberOfLines={2}>{subtitle}</AppText>
           </View>
           {showChevron && (
             <MaterialCommunityIcons
               name="chevron-right"
               size={30}
               color={colors.medium}
-              style={styles.chevron}
             />
           )}
         </View>
@@ -47,10 +46,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
     backgroundColor: colors.white,
+    alignItems: "center"
   },
-  chevron: {
-    alignSelf: "center",
-  },
+  
   detailsContainer: {
     marginLeft: 10,
     justifyContent: "center",

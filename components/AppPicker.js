@@ -14,11 +14,14 @@ import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
+import Icon from "./Icon";
 
 export default function AppPicker({
   icon,
   items,
   placeholder,
+  PickerItemComponent = PickerItem,
+  numberOfColumns = 1,
   onSelectItem,
   selectedItem,
   width = "100%",
@@ -58,13 +61,15 @@ export default function AppPicker({
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <Button title="Close" onPress={() => setModalVisible(false)} />
+
           <FlatList
+            numColumns={numberOfColumns}
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
                 onPress={() => selectionHandler(item)}
+                item={item}
               />
             )}
           />
