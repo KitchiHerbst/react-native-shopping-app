@@ -7,43 +7,15 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 //local
 import Screen from "./components/Screen";
 import ImageInput from "./components/ImageInput";
+import ImageListItem from "./components/ImageListItem";
+import FormImagesPicker from "./components/forms/FormImagesPicker";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
-
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) {
-      alert("You need to allow access to use photos in listing");
-    }
-  };
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("error reading image");
-    }
-  };
+  
 
   return (
     <Screen>
-      {imageUri && (
-        <TouchableWithoutFeedback onPress={() => setImageUri()}>
-          <Image
-            source={{ uri: imageUri }}
-            style={{ width: 111, height: 111 }}
-          />
-        </TouchableWithoutFeedback>
-      )}
-      <ImageInput onPress={selectImage} />
+      <FormImagesPicker />
     </Screen>
   );
 }
