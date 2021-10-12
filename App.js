@@ -7,38 +7,25 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 //local
 import Screen from "./components/Screen";
 import ImageInput from "./components/ImageInput";
+import ImageInputList from "./components/ImageInputList";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState([]);
 
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) {
-      alert("You need to allow access to use photos in listing");
-    }
+  const onRemoveImage = (uri) => {
+    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
   };
 
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("error reading image");
-    }
+  const onAddImage = (uri) => {
+    setImageUris([...imageUris, uri]);
   };
 
   return (
     <Screen>
-      <Button onPress={selectImage} title="photo" />
-      <ImageInput
-        imageUri={imageUri}
-        onChangeImage={(uri) => setImageUri(uri)}
+      <ImageInputList
+        imageUris={imageUris}
+        onAddImage={onAddImage}
+        onRemoveImage={onRemoveImage}
       />
     </Screen>
   );

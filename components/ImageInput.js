@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Image, Alert } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -19,6 +19,17 @@ export default function ImageInput({ imageUri, onChangeImage }) {
         },
         { text: "No" },
       ]);
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+    if (!granted) {
+      alert("You need to allow access to use photos in listing");
+    }
   };
 
   const selectImage = async () => {
