@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
+import { Image } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
+//local
 import Screen from "./components/Screen";
-import { Button, Image } from "react-native";
-import AppButton from "./components/AppButton";
 import ImageInput from "./components/ImageInput";
 
 export default function App() {
@@ -34,7 +35,15 @@ export default function App() {
 
   return (
     <Screen>
-      <ImageInput onPress={selectImage}/>
+      {imageUri && (
+        <TouchableWithoutFeedback onPress={() => setImageUri()}>
+          <Image
+            source={{ uri: imageUri }}
+            style={{ width: 111, height: 111 }}
+          />
+        </TouchableWithoutFeedback>
+      )}
+      <ImageInput onPress={selectImage} />
     </Screen>
   );
 }
