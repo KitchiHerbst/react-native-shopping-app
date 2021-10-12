@@ -9,6 +9,7 @@ import {
   SubmitButton,
   AppFormPicker,
 } from "../components/forms";
+import FormImagesPicker from "../components/forms/FormImagesPicker";
 import Icon from "../components/Icon";
 
 import Screen from "../components/Screen";
@@ -56,12 +57,15 @@ const pickerItems = [
   },
 ];
 
+const images = []
+
 export default function ListingEditScreen() {
   const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),
     price: Yup.number().required().min(1).max(10000).label("Price"),
     category: Yup.object().required().nullable().label("Category"),
     description: Yup.string().max(250).label("Description"),
+    // images: Yup.array().required().min(1).label("Images"),
   });
 
   return (
@@ -72,10 +76,12 @@ export default function ListingEditScreen() {
           price: "",
           category: null,
           description: "",
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
+        {/* <FormImagesPicker name="images" images={images} /> */}
         <AppFormField maxLength={250} name="title" placeholder="Title" />
         <AppFormField
           maxLength={8}
