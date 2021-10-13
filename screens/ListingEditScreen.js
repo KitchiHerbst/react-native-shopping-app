@@ -8,8 +8,8 @@ import {
   AppFormField,
   SubmitButton,
   AppFormPicker,
+  FormImagePicker,
 } from "../components/forms";
-import Icon from "../components/Icon";
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
@@ -62,6 +62,7 @@ export default function ListingEditScreen() {
     price: Yup.number().required().min(1).max(10000).label("Price"),
     category: Yup.object().required().nullable().label("Category"),
     description: Yup.string().max(250).label("Description"),
+    images: Yup.array().min(1, 'Please select at least one image')
   });
 
   return (
@@ -72,10 +73,12 @@ export default function ListingEditScreen() {
           price: "",
           category: null,
           description: "",
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
+        <FormImagePicker name="images" />
         <AppFormField maxLength={250} name="title" placeholder="Title" />
         <AppFormField
           maxLength={8}
