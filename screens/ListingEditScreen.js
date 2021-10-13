@@ -10,8 +10,6 @@ import {
   AppFormPicker,
   FormImagePicker,
 } from "../components/forms";
-// import FormImagesPicker from "../components/forms/FormImagesPicker";
-import Icon from "../components/Icon";
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
@@ -64,7 +62,7 @@ export default function ListingEditScreen() {
     price: Yup.number().required().min(1).max(10000).label("Price"),
     category: Yup.object().required().nullable().label("Category"),
     description: Yup.string().max(250).label("Description"),
-    // images: Yup.array().required().min(1).label("Images"),
+    images: Yup.array().min(1, 'Please select at least one image')
   });
 
   return (
