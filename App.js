@@ -8,6 +8,7 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import Screen from "./components/Screen";
 import ImageInput from "./components/ImageInput";
 import ImageInputList from "./components/ImageInputList";
+import ListingEditScreen from "./screens/ListingEditScreen";
 
 export default function App() {
   const [imageUris, setImageUris] = useState([]);
@@ -21,12 +22,14 @@ export default function App() {
   };
 
   return (
-    <Screen>
-      <ImageInputList
-        imageUris={imageUris}
-        onAddImage={onAddImage}
-        onRemoveImage={onRemoveImage}
-      />
-    </Screen>
+    // <Screen>
+      
+    //   {/* <ImageInputList
+    //     imageUris={imageUris}
+    //     onAddImage={onAddImage}
+    //     onRemoveImage={onRemoveImage}
+    //   /> */}
+    // </Screen>
+    <ListingEditScreen />
   );
 }
