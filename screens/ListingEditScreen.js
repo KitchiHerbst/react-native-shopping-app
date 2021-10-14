@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+
 import CategoryPickerItem from "../components/CategoryPickerItem";
 
 import {
@@ -13,6 +14,7 @@ import {
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
+import useLocation from "../hooks/useLocation";
 
 const pickerItems = [
   {
@@ -57,12 +59,14 @@ const pickerItems = [
 ];
 
 export default function ListingEditScreen() {
+  const location = useLocation()
+
   const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),
     price: Yup.number().required().min(1).max(10000).label("Price"),
     category: Yup.object().required().nullable().label("Category"),
     description: Yup.string().max(250).label("Description"),
-    images: Yup.array().min(1, 'Please select at least one image')
+    images: Yup.array().min(1, "Please select at least one image"),
   });
 
   return (
@@ -75,7 +79,7 @@ export default function ListingEditScreen() {
           description: "",
           images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.log(location)}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
