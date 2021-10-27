@@ -17,7 +17,7 @@ const ListItem = ({
   showChevron,
 }) => {
   return (
-    <Swipeable renderRightActions={renderRightActions}>
+    <Swipeable renderRightActions={renderRightActions} >
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
         <View style={[styles.container, style]}>
           {IconComponent}

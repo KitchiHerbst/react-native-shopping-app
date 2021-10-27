@@ -9,25 +9,27 @@ import Icon from "../components/Icon";
 import { ListItem, ListItemSeparator } from "../components/lists";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
-const menuItems = [
-  {
-    title: "My Listings",
-    icon: {
-      name: "format-list-bulleted",
-      backgroundColor: colors.primary,
+export default function Account({ navigation }) {
+  const menuItems = [
+    {
+      title: "My Listings",
+      icon: {
+        name: "format-list-bulleted",
+        backgroundColor: colors.primary,
+      },
     },
-  },
-  {
-    title: "My Messages",
-    icon: {
-      name: "email",
-      backgroundColor: colors.secondary,
+    {
+      title: "My Messages",
+      icon: {
+        name: "email",
+        backgroundColor: colors.secondary,
+      },
+      targetScreen: routes.MESSAGES,
     },
-  },
-];
+  ];
 
-export default function Account() {
   return (
     <Screen style={styles.screen}>
       <View style={styles.account}>
@@ -45,12 +47,14 @@ export default function Account() {
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
+              targetScreen={item.targetScreen}
               IconComponent={
                 <Icon
                   name={item.icon.name}
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />
