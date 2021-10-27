@@ -20,7 +20,7 @@ const AppNavigator = () => (
     }}
   >
     <Tab.Screen
-      name={routes.LISTINGS}
+      name={routes.LISTING_STACK}
       component={ListingsNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (
@@ -29,18 +29,18 @@ const AppNavigator = () => (
       }}
     />
     <Tab.Screen
-      name={routes.LISTING_DETAILS}
+      name={routes.LISTING_EDIT}
       component={ListingEditScreen}
       options={({ navigation }) => ({
         tabBarButton: () => (
           <ListingButton
-            onPress={() => navigation.navigate(routes.LISTING_DETAILS)}
+            onPress={() => navigation.navigate(routes.LISTING_EDIT)}
           />
         ),
       })}
     />
     <Tab.Screen
-      name={routes.ACCOUNT}
+      name={routes.ACCOUNT_STACK}
       component={AccountNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (

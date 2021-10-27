@@ -5,5 +5,8 @@ export default Object.freeze({
     MESSAGES: 'Messages',
     WELCOME: 'Welcom',
     LOGIN: 'Login',
-    REGISTER: 'Register'
+    REGISTER: 'Register',
+    LISTING_EDIT: 'ListingEditScreen',
+    LISTING_STACK: 'ListingStack',
+    ACCOUNT_STACK: 'AccountStack',
 })
