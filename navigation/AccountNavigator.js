@@ -7,7 +7,7 @@ import Messages from "../screens/Messages";
 const Stack = createNativeStackNavigator();
 
 const AccountNavigator = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator >
     <Stack.Screen name="Account" component={Account} />
     <Stack.Screen name="Messages" component={Messages} />
   </Stack.Navigator>

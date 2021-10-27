@@ -1,13 +1,14 @@
 import React from "react";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 
 import AuthNavigator from "./navigation/AuthNavigator";
-import TabNavigator from "./navigation/TabNavigator";
+import AppNavigator from "./navigation/AppNavigator";
+import navigationTheme from "./navigation/navigationTheme";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <TabNavigator />
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
     </NavigationContainer>
   );
 }

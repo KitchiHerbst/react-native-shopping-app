@@ -18,7 +18,6 @@ export default function Account({ navigation }) {
         name: "format-list-bulleted",
         backgroundColor: colors.primary,
       },
-      onPress: () => listingsPress(),
     },
     {
       title: "My Messages",
@@ -26,15 +25,9 @@ export default function Account({ navigation }) {
         name: "email",
         backgroundColor: colors.secondary,
       },
-      onPress: () => messagesPress(),
+      targetScreen: "Messages",
     },
   ];
-
-  const messagesPress = () => navigation.navigate("Messages");
-
-  const listingsPress = () => {
-    console.log("listing");
-  };
 
   return (
     <Screen style={styles.screen}>
@@ -53,13 +46,14 @@ export default function Account({ navigation }) {
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
-              onPress={item.onPress}
+              targetScreen={item.targetScreen}
               IconComponent={
                 <Icon
                   name={item.icon.name}
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />

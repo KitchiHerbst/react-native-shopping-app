@@ -1,16 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import ListingsNavigator from "./ListingsNavigator";
 import AccountNavigator from "./AccountNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import colors from "../config/colors";
+import ListingButton from "./ListingButton";
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => (
+const AppNavigator = () => (
   <Tab.Navigator
     screenOptions={{
       headerShown: false,
@@ -29,11 +30,16 @@ const TabNavigator = () => (
     <Tab.Screen
       name="ListingEditScreen"
       component={ListingEditScreen}
-    //   options={{
-    //     tabBarButton: ({ size, color }) => (
-    //       <TouchableOpacity style={styles.button}></TouchableOpacity>
-    //     ),
-    //   }}
+      options={{
+        tabBarButton: () => <ListingButton />,
+        tabBarIcon: ({ size, color }) => (
+          <MaterialCommunityIcons
+            name="plus-circle"
+            size={size}
+            color={color}
+          />
+        ),
+      }}
     />
     <Tab.Screen
       name="Account"
@@ -56,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TabNavigator;
+export default AppNavigator;

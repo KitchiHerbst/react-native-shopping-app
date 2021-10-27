@@ -7,7 +7,7 @@ import ListingDetails from "../screens/ListingDetails";
 const Stack = createNativeStackNavigator();
 
 const ListingsNavigator = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator screenOptions={{ headerShown: false, presentation: 'modal' }} >
     <Stack.Screen name="Listings" component={Listings} />
     <Stack.Screen name="ListingDetails" component={ListingDetails} />
   </Stack.Navigator>

@@ -35,13 +35,14 @@ export default function Listings({navigation}) {
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
-          <TouchableWithoutFeedback style={styles.cardWrapper} onPress={() => navigation.navigate('ListingDetails', {listing: item})}>
+          <View style={styles.cardWrapper} >
             <Card
               title={item.title}
               subtitle={"$" + item.subtitle}
               image={item.image}
+              onPress={() => navigation.navigate('ListingDetails', {listing: item})}
             />
-          </TouchableWithoutFeedback>
+          </View>
         )}
       />
     </Screen>
