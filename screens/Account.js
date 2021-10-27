@@ -10,24 +10,32 @@ import { ListItem, ListItemSeparator } from "../components/lists";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 
-const menuItems = [
-  {
-    title: "My Listings",
-    icon: {
-      name: "format-list-bulleted",
-      backgroundColor: colors.primary,
+export default function Account({ navigation }) {
+  const menuItems = [
+    {
+      title: "My Listings",
+      icon: {
+        name: "format-list-bulleted",
+        backgroundColor: colors.primary,
+      },
+      onPress: () => listingsPress(),
     },
-  },
-  {
-    title: "My Messages",
-    icon: {
-      name: "email",
-      backgroundColor: colors.secondary,
+    {
+      title: "My Messages",
+      icon: {
+        name: "email",
+        backgroundColor: colors.secondary,
+      },
+      onPress: () => messagesPress(),
     },
-  },
-];
+  ];
 
-export default function Account() {
+  const messagesPress = () => navigation.navigate("Messages");
+
+  const listingsPress = () => {
+    console.log("listing");
+  };
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.account}>
@@ -45,6 +53,7 @@ export default function Account() {
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
+              onPress={item.onPress}
               IconComponent={
                 <Icon
                   name={item.icon.name}
