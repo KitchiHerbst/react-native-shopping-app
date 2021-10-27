@@ -3,10 +3,14 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "./components/Screen";
 import AppText from "./components/AppText";
 import { Button } from "react-native";
+import Home from "./screens/Home";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -20,7 +24,7 @@ const Link = () => {
   );
 };
 
-const Tweets = ({navigation}) => (
+const Tweets = ({ navigation }) => (
   <Screen>
     <AppText>Tweets</AppText>
     <Link />
@@ -38,7 +42,7 @@ const Account = () => (
   <Screen>
     <AppText> Account </AppText>
   </Screen>
-)
+);
 
 const Stack = createNativeStackNavigator();
 
@@ -48,24 +52,54 @@ const StackNavigator = () => (
     <Stack.Screen
       name="TweetDetails"
       component={TweetDetails}
-      options={({ route, navigation }) => ({ title: 'Tweet Details' })}
+      options={({ route, navigation }) => ({ title: "Tweet Details" })}
     />
   </Stack.Navigator>
 );
 
-const Tab = createBottomTabNavigator()
+const AuthNavigator = () => (
+  <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen name='Welcome' component={Home}/>
+    <Stack.Screen name='Login' component={LoginScreen}/>
+    <Stack.Screen name='Register' component={RegisterScreen}/>
+  </Stack.Navigator>
+)
+
+const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name='Feed' component={Tweets}/>
-    <Tab.Screen name='Account' component={Account}/>
+  <Tab.Navigator
+    screenOptions={{
+      tabBarActiveBackgroundColor: "tomato",
+      tabBarActiveTintColor: "white",
+      tabBarInactiveBackgroundColor: "#eee",
+      tabBarInactiveTintColor: "black",
+    }}
+  >
+    <Tab.Screen
+      name="Feed"
+      component={StackNavigator}
+      options={{
+        headerShown: false,
+        tabBarIcon: ({ size, color }) => (
+          <MaterialCommunityIcons color={color} name="home" size={size} />
+        ),
+      }}
+    />
+    <Tab.Screen name="Account" component={Account} />
+  </Tab.Navigator>
+);
+
+const AppTabNavigator = () => (
+  <Tab.Navigator >
+    
   </Tab.Navigator>
 )
 
 export default function App() {
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
