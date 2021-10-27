@@ -8,6 +8,7 @@ import AccountNavigator from "./AccountNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import colors from "../config/colors";
 import ListingButton from "./ListingButton";
+import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +20,7 @@ const AppNavigator = () => (
     }}
   >
     <Tab.Screen
-      name="Listings"
+      name={routes.LISTINGS}
       component={ListingsNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (
@@ -28,21 +29,18 @@ const AppNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="ListingEditScreen"
+      name={routes.LISTING_DETAILS}
       component={ListingEditScreen}
-      options={{
-        tabBarButton: () => <ListingButton />,
-        tabBarIcon: ({ size, color }) => (
-          <MaterialCommunityIcons
-            name="plus-circle"
-            size={size}
-            color={color}
+      options={({ navigation }) => ({
+        tabBarButton: () => (
+          <ListingButton
+            onPress={() => navigation.navigate(routes.LISTING_DETAILS)}
           />
         ),
-      }}
+      })}
     />
     <Tab.Screen
-      name="Account"
+      name={routes.ACCOUNT}
       component={AccountNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (
