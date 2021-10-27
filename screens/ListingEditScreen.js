@@ -59,7 +59,7 @@ const pickerItems = [
 ];
 
 export default function ListingEditScreen() {
-  const location = useLocation()
+  const location = useLocation();
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),

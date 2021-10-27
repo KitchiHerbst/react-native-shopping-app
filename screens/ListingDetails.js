@@ -5,13 +5,14 @@ import { ListItem } from "../components/lists";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 
-const ListingDetails = () => {
+const ListingDetails = ({ route }) => {
+  const { image, title, subtitle } = route.params.listing;
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+      <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red Jacket For Sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
+        <AppText style={styles.title}>{title}</AppText>
+        <AppText style={styles.price}>${subtitle}</AppText>
         <ListItem
           image={require("../assets/mosh.jpg")}
           title="Mosh Hamedani"

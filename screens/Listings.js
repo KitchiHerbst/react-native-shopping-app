@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, FlatList, View } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 //local
 import Card from "../components/Card";
@@ -27,20 +28,20 @@ const listings = [
   },
 ];
 
-export default function Listings() {
+export default function Listings({navigation}) {
   return (
     <Screen style={styles.screen}>
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.cardWrapper}>
+          <TouchableWithoutFeedback style={styles.cardWrapper} onPress={() => navigation.navigate('ListingDetails', {listing: item})}>
             <Card
               title={item.title}
               subtitle={"$" + item.subtitle}
               image={item.image}
             />
-          </View>
+          </TouchableWithoutFeedback>
         )}
       />
     </Screen>
